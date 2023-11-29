@@ -1,5 +1,6 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class index{
@@ -8,16 +9,7 @@ public class index{
         Scanner scanner = new Scanner(System.in);
         int opcion;
 
-        listaDoble.insertI("a");
-        listaDoble.insertI("b");
-        listaDoble.insertI("c");
-        listaDoble.insertI("d");
-        listaDoble.insertI("e");
-        
 
-
-        System.out.println("Posicion: " + listaDoble.buscar("a"));
-        System.out.println("Posicion optimizada: " + listaDoble.buscaOptimizada("f", 2));
         do {
             System.out.println("\n----- Menú Principal -----");
             System.out.println("1. Mostrar Lista Ascendente");
@@ -28,29 +20,32 @@ public class index{
             System.out.println("6. Buscar Elemento");
             System.out.println("7. Modificar elemento");
             System.out.println("8. Inicializar / Borra lista");
+            System.out.println("9. Creditos");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
             
             opcion = scanner.nextInt();
 
             switch (opcion) {
-                case 1:
-                    System.out.println("\n----- Mostrar Lista Ascendente -----");
-                    listaDoble.mostrarAD(1);
-                    break;
-                case 2:
-                    System.out.println("\n----- Mostrar Lista Descendente -----");
-                    listaDoble.mostrarAD(2);
-                    break;
+               case 1:
+                System.out.println("\n----- Mostrar Lista Ascendente -----");
+                ArrayList<String> listaAscendente = listaDoble.mostrarAD(1);
+                System.out.println("Lista Ascendente: " + listaAscendente);
+                break;
+            case 2:
+                System.out.println("\n----- Mostrar Lista Descendente -----");
+                ArrayList<String> listaDescendente = listaDoble.mostrarAD(2);
+                System.out.println("Lista Descendente: " + listaDescendente);
+                break;
                 case 3:
                     System.out.print("Ingrese el dato a insertar al inicio: ");
-                    scanner.nextLine();  // Consumir el salto de línea pendiente
+                    scanner.nextLine();  
                     String datoInicio = scanner.nextLine();
                     listaDoble.insertI(datoInicio);
                     break;
                 case 4:
                     System.out.print("Ingrese el dato a insertar al final: ");
-                    scanner.nextLine();  // Consumir el salto de línea pendiente
+                    scanner.nextLine();  
                     String datoFinal = scanner.nextLine();
                     listaDoble.insertF(datoFinal);
                     break;
@@ -62,7 +57,7 @@ public class index{
                     break;
                     case 6:
                     System.out.print("Ingrese el dato a buscar: ");
-                    scanner.nextLine();  // Consumir el salto de línea pendiente
+                    scanner.nextLine();  
                     String datoBuscar = scanner.nextLine();
                     
                     System.out.println("Orden de búsqueda: ");
@@ -70,7 +65,7 @@ public class index{
                     System.out.println("2. Descendente");
                     System.out.print("Seleccione una opción: ");
                     int orden = scanner.nextInt();
-                    scanner.nextLine();  // Consumir el salto de línea pendiente después de nextInt()
+                    scanner.nextLine();  
                 
                     int posicion = listaDoble.buscaOptimizada(datoBuscar, orden);
                     
@@ -94,7 +89,15 @@ public class index{
                 case 8:
                     listaDoble.inicializar();
                     System.out.println("Lista inicializada");
-                case 0:
+                
+                case 9:
+                    System.out.println("----- Creditos -----");
+                    System.out.println("Nombres: Marco Antonio Chavez Baltierrez | Jesus Alberto Ramirez Gonzalez");
+                    System.out.println("Matriculas: 22170149 | 22170147");
+                    System.out.println("Curso: Estructura de Datos");
+                    System.out.println("Sección: 4-C");
+                    break;
+                    case 0:
                     break;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
